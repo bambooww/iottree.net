@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="iottree_client_demo/iottree_client_demo.csproj" Id="72b3094d-aa72-4073-9d65-0774b992565e" />
+  <Project Path="iottree_console_demo/iottree_console_demo.csproj" Id="e2ecf7b8-ad2f-4d7e-b55c-152bf6644e7f" />
+  <Project Path="lib/lib.csproj" />
+</Solution>

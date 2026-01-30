@@ -1,0 +1,8 @@
+/.vs/
+/lib/bin/
+/lib/obj/
+/packages/
+/iottree_console_demo/bin/
+/iottree_console_demo/obj/
+/iottree_client_demo/bin/
+/iottree_client_demo/obj/
