@@ -217,9 +217,20 @@ namespace iottree.lib
         /// <summary>
         /// 获取所有标签缓存值
         /// </summary>
-        public Dictionary<string, IOTTreeTagVal> GetAllTagValues()
+        public Dictionary<string, IOTTreeTagVal> GetTagValuesMap()
         {
             return _tagCache.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        }
+
+        public List<IOTTreeTag> GetRegisterTags()
+        {
+            List<IOTTreeTagVal> tvs = GetTagValues();
+            List<IOTTreeTag> rets = new List<IOTTreeTag>();
+            foreach(IOTTreeTagVal tv in tvs)
+            {
+                rets.Add(tv.Tag);
+            }
+            return rets;
         }
 
         /// <summary>
@@ -261,7 +272,7 @@ namespace iottree.lib
         }
 
         /// <summary>
-        /// 写入标签值（写操作）
+        /// write value to tag,it may cause device driver to do write operation
         /// </summary>
         public async Task<bool> WriteTagValueAsync(string tagPath, string value)
         {
@@ -290,7 +301,7 @@ namespace iottree.lib
         }
 
         /// <summary>
-        /// 设置标签值（内存操作）
+        /// set tag value in memory
         /// </summary>
         public async Task<bool> SetTagValueAsync(string tagPath, string value)
         {
@@ -319,21 +330,18 @@ namespace iottree.lib
         }
 
         /// <summary>
-        /// 获取项目列表
+        /// get project list in IOT-Tree Server
         /// </summary>
-        public async Task<List<PrjItem>> GetProjectListAsync()
+        public async Task<List<PrjItem>> ReadProjectListAsync()
         {
             if(_client==null)
                 return new List<PrjItem>();
             try
             {
                 var result = await _client.listPrjsAsync(new ReqClient { ClientId = _clientId }, _headers);
-                if (result != null)
+                if (result == null)
                 {
-                    foreach (PrjItem pi in result.Prjs)
-                    {
-                        Console.WriteLine($">>prj item: {pi.Name} - {pi.Title}");
-                    }
+                    return new List<PrjItem>();
                 }
                 return result.Prjs.ToList();
             }
@@ -345,9 +353,9 @@ namespace iottree.lib
         }
 
         /// <summary>
-        /// 获取项目中的标签列表
+        /// get tags in project
         /// </summary>
-        public async Task<List<TagItem>> GetTagsInProjectAsync(string projectName)
+        public async Task<List<TagItem>> ReadTagsInProjectAsync(string projectName)
         {
             try
             {
@@ -367,7 +375,7 @@ namespace iottree.lib
         }
 
         /// <summary>
-        /// 工作线程主循环
+        /// work main thread loop
         /// </summary>
         private async void WorkerThreadProc()
         {
@@ -430,32 +438,6 @@ namespace iottree.lib
 
             try
             {
-                //Console.Write(" - -  " + _serverAddress);
-                //System.Net.Http.HttpClientHandler
-                /*
-                var handler = new System.Net.Http.SocketsHttpHandler
-                {
-                    PooledConnectionIdleTimeout = Timeout.InfiniteTimeSpan,
-                    KeepAlivePingDelay = TimeSpan.FromSeconds(60),
-                    KeepAlivePingTimeout = TimeSpan.FromSeconds(30),
-                    EnableMultipleHttp2Connections = true
-                };
-
-                var channel = GrpcChannel.ForAddress("https://localhost:5001",
-                    new GrpcChannelOptions
-                    {
-                        HttpHandler = handler,          // ← 相当于原来的多条 ChannelOption
-                        Credentials = ChannelCredentials.Insecure
-                    });
-
-                , new[]
-{
-    ("grpc.keepalive_time_ms", 5000),
-    new ChannelOption("grpc.keepalive_timeout_ms", 2000),
-    new ChannelOption("grpc.max_connection_idle_ms", 8000)
-});//, ChannelCredentials.Insecure);
-                */
-
                 _channel = GrpcChannel.ForAddress(_serverAddress);
 
                 
@@ -478,7 +460,7 @@ namespace iottree.lib
         }
 
         /// <summary>
-        /// 设置同步标签路径
+        /// 
         /// </summary>
         private async Task SetupTagPathsAsync()
         {
@@ -514,7 +496,7 @@ namespace iottree.lib
         }
 
         /// <summary>
-        /// 初始化标签缓存
+        /// init tag cache
         /// </summary>
         private void InitializeTagCache(RepeatedField<TagItem> tags)
         {
@@ -530,7 +512,7 @@ namespace iottree.lib
         }
 
         /// <summary>
-        /// 开始同步标签数据
+        /// 
         /// </summary>
         private async Task StartSyncingAsync()
         {
@@ -714,8 +696,13 @@ namespace iottree.lib
             ConnectionRestored?.Invoke(this, EventArgs.Empty);
         }
 
+        public void Stop()
+        {
+            Dispose();
+        }
+
         /// <summary>
-        /// 释放资源
+        /// release
         /// </summary>
         public async void Dispose()
         {

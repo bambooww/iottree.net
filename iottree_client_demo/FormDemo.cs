@@ -27,7 +27,7 @@ namespace iottree_client_demo
             {
                 string ss = "";
                 foreach (var tv in tagvals)
-                    ss += tv.Path + "=" + tv.StrVal + "\r\n";
+                    ss += tv.UpdateTime.ToLocalTime().ToString("hh:mm:ss")+" "+ tv.Path + "=" + tv.StrVal + "\r\n";
                 tbTagVals.Text = ss;
             }
         }
@@ -146,7 +146,7 @@ namespace iottree_client_demo
             if (client == null)
                 return;
 
-            client.Dispose();
+            client.Stop();
             client = null;
         }
 

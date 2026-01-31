@@ -51,7 +51,7 @@
             // 
             // btnStartPump
             // 
-            btnStartPump.Location = new Point(318, 408);
+            btnStartPump.Location = new Point(345, 469);
             btnStartPump.Name = "btnStartPump";
             btnStartPump.Size = new Size(142, 38);
             btnStartPump.TabIndex = 0;
@@ -62,7 +62,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(46, 225);
+            label1.Location = new Point(73, 286);
             label1.Name = "label1";
             label1.Size = new Size(76, 17);
             label1.TabIndex = 1;
@@ -71,7 +71,7 @@
             // panelLvlC
             // 
             panelLvlC.BackColor = Color.Black;
-            panelLvlC.Location = new Point(211, 198);
+            panelLvlC.Location = new Point(238, 259);
             panelLvlC.Name = "panelLvlC";
             panelLvlC.Size = new Size(35, 200);
             panelLvlC.TabIndex = 2;
@@ -79,7 +79,7 @@
             // panLvl
             // 
             panLvl.BackColor = Color.FromArgb(0, 192, 192);
-            panLvl.Location = new Point(211, 298);
+            panLvl.Location = new Point(238, 359);
             panLvl.Name = "panLvl";
             panLvl.Size = new Size(35, 100);
             panLvl.TabIndex = 3;
@@ -87,7 +87,7 @@
             // labelLvl
             // 
             labelLvl.AutoSize = true;
-            labelLvl.Location = new Point(128, 225);
+            labelLvl.Location = new Point(155, 286);
             labelLvl.Name = "labelLvl";
             labelLvl.Size = new Size(32, 17);
             labelLvl.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             // btnStopPump
             // 
-            btnStopPump.Location = new Point(492, 408);
+            btnStopPump.Location = new Point(519, 469);
             btnStopPump.Name = "btnStopPump";
             btnStopPump.Size = new Size(142, 38);
             btnStopPump.TabIndex = 5;
@@ -115,7 +115,7 @@
             // 
             labelErr.AutoSize = true;
             labelErr.ForeColor = Color.Red;
-            labelErr.Location = new Point(114, 176);
+            labelErr.Location = new Point(141, 237);
             labelErr.Name = "labelErr";
             labelErr.Size = new Size(23, 17);
             labelErr.TabIndex = 7;
@@ -161,7 +161,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(402, 14);
+            label4.Location = new Point(407, 14);
             label4.Name = "label4";
             label4.Size = new Size(57, 17);
             label4.TabIndex = 12;
@@ -173,9 +173,9 @@
             tbTagPaths.Multiline = true;
             tbTagPaths.Name = "tbTagPaths";
             tbTagPaths.ScrollBars = ScrollBars.Vertical;
-            tbTagPaths.Size = new Size(287, 110);
+            tbTagPaths.Size = new Size(287, 160);
             tbTagPaths.TabIndex = 13;
-            tbTagPaths.Text = "watertank.ch1.aio.wl_val\r\nwatertank.ch1.aio.m1\r\nwatertank.ch1.dio.pstart\r\nwatertank.ch1.dio.pstop\r\nwatertank.ch1.dio.p_running";
+            tbTagPaths.Text = "watertank.ch1.aio.wl_val\r\nwatertank.ch1.aio.m1\r\nwatertank.ch1.dio.pstart\r\nwatertank.ch1.dio.pstop\r\nwatertank.ch1.dio.p_running\r\nwatertank.ch1._driver_run\r\nwatertank.ch1._conn_ready";
             // 
             // label5
             // 
@@ -188,18 +188,18 @@
             // 
             // tbTagVals
             // 
-            tbTagVals.Location = new Point(436, 44);
+            tbTagVals.Location = new Point(407, 41);
             tbTagVals.Multiline = true;
             tbTagVals.Name = "tbTagVals";
             tbTagVals.ReadOnly = true;
             tbTagVals.ScrollBars = ScrollBars.Vertical;
-            tbTagVals.Size = new Size(362, 107);
+            tbTagVals.Size = new Size(391, 160);
             tbTagVals.TabIndex = 15;
             // 
             // labelInf
             // 
             labelInf.AutoSize = true;
-            labelInf.Location = new Point(114, 154);
+            labelInf.Location = new Point(141, 215);
             labelInf.Name = "labelInf";
             labelInf.Size = new Size(23, 17);
             labelInf.TabIndex = 16;
@@ -208,7 +208,7 @@
             // labelRunST
             // 
             labelRunST.AutoSize = true;
-            labelRunST.Location = new Point(513, 267);
+            labelRunST.Location = new Point(540, 328);
             labelRunST.Name = "labelRunST";
             labelRunST.Size = new Size(32, 17);
             labelRunST.TabIndex = 17;
@@ -216,7 +216,7 @@
             // 
             // panelRunST
             // 
-            panelRunST.Location = new Point(445, 252);
+            panelRunST.Location = new Point(472, 313);
             panelRunST.Name = "panelRunST";
             panelRunST.Size = new Size(59, 45);
             panelRunST.TabIndex = 18;
@@ -225,7 +225,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(810, 458);
+            ClientSize = new Size(809, 526);
             Controls.Add(panelRunST);
             Controls.Add(labelRunST);
             Controls.Add(labelInf);
