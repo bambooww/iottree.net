@@ -1,6 +1,7 @@
-"# iottree.net" 
+iottree.net is the C#.NET Client support library for IOT-Tree Server
+==
 
-<a href="./README_cn.md" target="_blank">ÖÐÎÄ</a>
+<a href="./README_cn.md" target="_blank">ä¸­æ–‡</a>
 
 iottree.net is the C#.NET Client support library for IOT-Tree Server
 
